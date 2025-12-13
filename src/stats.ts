@@ -53,6 +53,19 @@ export class Stats {
     const projectTimes = this.tracker.getProjectTimes();
     const streak = this.getCodingStreak();
     const motivational = this.getRandomMotivationalMessage();
+    const languageTimes = this.tracker.getLanguageTimes ? this.tracker.getLanguageTimes() : {};
+
+    // Determine top language
+    let topLanguage = 'N/A';
+    let topLangMinutes = 0;
+    for (const lang in languageTimes) {
+      const mins = Math.floor(languageTimes[lang] / 60000);
+      if (mins > topLangMinutes) {
+        topLangMinutes = mins;
+        topLanguage = lang;
+      }
+    }
+
 
     let projectBreakdown = '';
     for (const project in projectTimes) {
@@ -60,13 +73,22 @@ export class Stats {
       projectBreakdown += `<li>${project}: ${mins} minutes</li>`;
     }
 
+    let languageBreakdown = '';
+    for (const lang in languageTimes) {
+      const mins = Math.floor(languageTimes[lang] / 60000);
+      languageBreakdown += `<li>${lang}: ${mins} minutes</li>`;
+    }
+
     const html = `
       <h1>Your DevPulse Daily Report</h1>
       <p><strong>Total active coding time:</strong> ${totalMinutes} minutes</p>
+      <p><strong>Top language:</strong> ${topLanguage} (${topLangMinutes} minutes)</p>
       <p><strong>Time spent per project:</strong></p>
       <ul>${projectBreakdown}</ul>
+      <p><strong>Time spent per language:</strong></p>
+      <ul>${languageBreakdown}</ul>
       <p><strong>Coding streak:</strong> ${streak} days</p>
-      <p><em>Motivational message:</em> ${motivational}</p>
+      <p style="font-size:1.05em; padding:10px; border-left:4px solid #38a169;"><em>Motivational message:</em> ${motivational}</p>
       <p><em>Remember to keep coding tomorrow!</em></p>
     `;
 

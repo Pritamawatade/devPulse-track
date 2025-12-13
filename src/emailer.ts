@@ -23,13 +23,14 @@ export class Emailer {
     });
   }
 
-  async sendTestEmail() {
+  async sendTestEmail(html?: string) {
     if (!this.resend) throw new Error('Resend client not initialized.');
+    const content = html || '<strong>It works!</strong>';
     await this.resend.emails.send({
       from: 'DevPulse <onboarding@resend.dev>',
       to: ['pritamawatade5@gmail.com'],
       subject: 'DevPulse Test Email',
-      html: '<strong>It works!</strong>'
+      html: content
     });
   }
 }

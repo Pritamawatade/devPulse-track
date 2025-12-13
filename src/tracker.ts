@@ -9,6 +9,7 @@ interface ProjectTime {
 interface SavedData {
   projectTimes?: ProjectTime;
   startOfDay?: number;
+  languageTimes?: { [language: string]: number };
 }
 
 export class Tracker {
@@ -17,6 +18,7 @@ export class Tracker {
   private _lastActivity: number = 0;
   private _intervalId: NodeJS.Timeout | undefined;
   private _projectTimes: ProjectTime = {};
+  private _languageTimes: { [language: string]: number } = {};
   private _startOfDay: number = 0;
 
   constructor(globalState: vscode.Memento) {
@@ -29,12 +31,14 @@ export class Tracker {
     const data = this._globalState.get<SavedData>('devpulse-tracking-data', {});
     this._projectTimes = data.projectTimes || {};
     this._startOfDay = data.startOfDay || Date.now();
+    this._languageTimes = data.languageTimes || {};
   }
 
   private _save() {
     this._globalState.update('devpulse-tracking-data', {
       projectTimes: this._projectTimes,
       startOfDay: this._startOfDay
+      , languageTimes: this._languageTimes
     });
   }
 
@@ -98,6 +102,12 @@ export class Tracker {
       this._projectTimes[projectName] = 0;
     }
     this._projectTimes[projectName] += ms;
+    // track language times
+    const lang = editor.document.languageId || 'unknown';
+    if (!this._languageTimes[lang]) {
+      this._languageTimes[lang] = 0;
+    }
+    this._languageTimes[lang] += ms;
     this._save();
   }
 
@@ -111,6 +121,10 @@ export class Tracker {
 
   getProjectTimes(): ProjectTime {
     return this._projectTimes;
+  }
+
+  getLanguageTimes(): { [language: string]: number } {
+    return this._languageTimes;
   }
 
   getStartOfDay(): number {

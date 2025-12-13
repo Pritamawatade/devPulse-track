@@ -144,7 +144,13 @@ export function activate(context: vscode.ExtensionContext) {
         return;
       }
       try {
-        await emailer.sendTestEmail();
+        if (!tracker) {
+          vscode.window.showErrorMessage('Tracker not initialized.');
+          return;
+        }
+        const stats = new Stats(tracker);
+        const report = await stats.generateReport();
+        await emailer.sendTestEmail(report);
         vscode.window.showInformationMessage('Test email sent successfully!');
       } catch (err) {
         vscode.window.showErrorMessage(

@@ -32,6 +32,7 @@ Note: At present the recipient email is hard-coded in `src/emailer.ts`. Consider
 - `DevPulse: Stop Tracking` — Stop tracking
 - `DevPulse: Show Stats` — Displays the daily report and project breakdown in a webview
 - `DevPulse: Send Test Email` — Sends a test email to validate your Resend API key
+ - `DevPulse: Send Test Email` — Sends a test email with a motivational report (showing your top language and time spent) to validate your Resend API key
 
 ---
 
