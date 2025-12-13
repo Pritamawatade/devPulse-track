@@ -1,10 +1,16 @@
 {
   "name": "devpulse-daily",
   "displayName": "DevPulse Daily",
+  "publisher": "Pritamawatade",
   "description": "Track your daily active coding time and get a daily email summary.",
   "version": "1.0.0",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.70.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pritamawatade/devPulse-track.git"
   },
   "categories": ["Other"],
   "activationEvents": [
