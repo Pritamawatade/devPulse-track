@@ -1,0 +1,63 @@
+{
+  "name": "devpulse-daily",
+  "displayName": "DevPulse Daily",
+  "description": "Track your daily active coding time and get a daily email summary.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.70.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onCommand:devpulse.startTracking",
+    "onCommand:devpulse.stopTracking",
+    "onCommand:devpulse.showStats",
+    "onCommand:devpulse.sendTestEmail"
+  ],
+  "main": "./out/extension.js",
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5",
+    "@types/node": "^18.11.18",
+    "@types/vscode": "^1.70.0",
+    "vsce": "^2.10.0"
+  },
+  "dependencies": {
+    "resend": "^1.0.0"
+  },
+  "contributes": {
+    "configuration": {
+      "type": "object",
+      "title": "DevPulse Daily Configuration",
+      "properties": {
+        "devpulse.resendApiKey": {
+          "type": "string",
+          "description": "API key for Resend email service",
+          "default": ""
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "devpulse.startTracking",
+        "title": "DevPulse: Start Tracking"
+      },
+      {
+        "command": "devpulse.stopTracking",
+        "title": "DevPulse: Stop Tracking"
+      },
+      {
+        "command": "devpulse.showStats",
+        "title": "DevPulse: Show Stats"
+      },
+      {
+        "command": "devpulse.sendTestEmail",
+        "title": "DevPulse: Send Test Email"
+      }
+    ]
+  }
+}
