@@ -86,6 +86,33 @@ You can also install from the VS Code UI: Extensions → ... → Install from VS
 
 ---
 
+## 🏷️ Publishing to the VS Code Marketplace
+
+If you intend to publish this extension to the Visual Studio Marketplace under the publisher `Pritamawatade`, make sure:
+
+1. The `publisher` field in `package.json` matches your Marketplace publisher name (it does: `Pritamawatade`).
+2. You have created a publisher on the Marketplace (https://marketplace.visualstudio.com/manage).
+3. Create a Personal Access Token (PAT) in the Marketplace and give it the necessary permissions.
+
+Common steps to publish from your machine:
+
+```bash
+# log in (this will prompt for a PAT)
+npx vsce login Pritamawatade
+
+# publish a new version (bump type: patch/minor/major)
+npx vsce publish patch
+```
+
+If you prefer, you can also create the publisher via CLI:
+
+```bash
+npx vsce create-publisher Pritamawatade
+```
+
+Note: `vsce` will read the `publisher` field from `package.json` and ensure it matches the publisher you are authenticated as; mismatches cause the 'Publisher ID undefined' or 'mismatch' errors during publish.
+
+
 ## 🧪 Manual Testing
 
 1. Launch the Development Host (F5).
