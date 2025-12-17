@@ -75,7 +75,6 @@ export class Tracker {
     }
     this._active = false;
   }
-
   private _onUserActivity() {
     this._lastActivity = Date.now();
   }
