@@ -208,6 +208,5 @@ vsce publish
 
 Make sure you have a publisher configured and logged in.
 
-## License
-
+### License
 MIT
