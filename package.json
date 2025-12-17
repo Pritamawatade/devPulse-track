@@ -16,6 +16,7 @@
     "Other"
   ],
   "activationEvents": [
+    "*",
     "onCommand:devpulse.startTracking",
     "onCommand:devpulse.showStats",
     "onCommand:devpulse.sendTestEmail"
