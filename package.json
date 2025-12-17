@@ -3,7 +3,7 @@
   "displayName": "DevPulse Daily",
   "publisher": "Pritamawatade",
   "description": "Track your daily active coding time and get a daily email summary.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "engines": {
     "vscode": "^1.70.0"
