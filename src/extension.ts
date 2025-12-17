@@ -161,6 +161,7 @@ export function activate(context: vscode.ExtensionContext) {
   );
 
   // Start tracking automatically on activation
+  // vscode.commands.executeCommand('devpulse.startTracking');
   tracker.start();
   updateStatusBar();
 }

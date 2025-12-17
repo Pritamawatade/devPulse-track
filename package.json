@@ -3,7 +3,7 @@
   "displayName": "DevPulse Daily",
   "publisher": "Pritamawatade",
   "description": "Track your daily active coding time and get a daily email summary.",
-  "version": "1.0.2",
+  "version": "1.0.7",
   "license": "MIT",
   "engines": {
     "vscode": "^1.70.0"
@@ -16,7 +16,9 @@
     "Other"
   ],
   "activationEvents": [
-    "onStartupFinished"
+    "onCommand:devpulse.startTracking",
+    "onCommand:devpulse.showStats",
+    "onCommand:devpulse.sendTestEmail"
   ],
   "main": "./out/extension.js",
   "scripts": {
