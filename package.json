@@ -12,8 +12,14 @@
     "type": "git",
     "url": "https://github.com/Pritamawatade/devPulse-track.git"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Other"
+  ],
   "activationEvents": [
+    "onCommand:devpulse.startTracking",
+    "onCommand:devpulse.stopTracking",
+    "onCommand:devpulse.showStats",
+    "onCommand:devpulse.sendTestEmail",
     "*"
   ],
   "main": "./out/extension.js",
